@@ -9,6 +9,8 @@ cd "$(dirname "$0")"
 # If we're not on OS X, then error
 case $OSTYPE in
     darwin*)
+        ls /Users
+        exit 1
         wget https://desktop.docker.com/mac/main/amd64/Docker.dmg
         sudo hdiutil attach Docker.dmg
         sudo /Volumes/Docker/Docker.app/Contents/MacOS/install --accept-license
