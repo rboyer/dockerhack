@@ -19,7 +19,7 @@ case $OSTYPE in
         sudo xattr -r -d com.apple.quarantine /Applications/Docker.app
 
         # Install privileged components
-        sudo /Applications/Docker.app/Contents/MacOS/Docker \
+        /Applications/Docker.app/Contents/MacOS/Docker \
               --unattended \
               --install-privileged-components
 
