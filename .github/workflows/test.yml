@@ -11,6 +11,8 @@ jobs:
   test-osx:
     runs-on: macos-latest
     steps:
+      - uses: docker-practice/actions-setup-docker@master
+        timeout-minutes: 12
       - uses: actions/checkout@v3
       - name: Run tests
         run: |
