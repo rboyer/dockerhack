@@ -15,6 +15,8 @@ case $OSTYPE in
         echo "We are waiting for Docker to be up and running. It can take over 2 minutes..."
         while ! /Applications/Docker.app/Contents/Resources/bin/docker info &>/dev/null; do sleep 1; done
 
+        echo "docker.local: $(host docker.local)"
+
         echo "getting ip of the host"
         docker run --rm --net host alpine:latest ip addr
         ;;
