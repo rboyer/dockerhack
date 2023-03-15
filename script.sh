@@ -11,9 +11,17 @@ case $OSTYPE in
     darwin*)
         set -x
         wget -q https://desktop.docker.com/mac/main/amd64/Docker.dmg
-        sudo hdiutil attach Docker.dmg
+        sudo hdiutil attach -noverify Docker.dmg
         sudo /Volumes/Docker/Docker.app/Contents/MacOS/install --accept-license --user=runner
         # sudo hdiutil detach /Volumes/Docker
+
+        # Remove quarantine attribute
+        sudo xattr -r -d com.apple.quarantine /Applications/Docker.app
+
+        # Install privileged components
+        sudo /Applications/Docker.app/Contents/MacOS/Docker \
+              --unattended \
+              --install-privileged-components
 
         echo "We are waiting for Docker to be up and running. It can take over 2 minutes..."
         while ! docker info ; do sleep 1; done
