@@ -9,7 +9,8 @@ permissions:
 
 jobs:
   test-osx:
-    runs-on: macos-latest
+    # runs-on: macos-latest
+    runs-on: macos-12
     steps:
       - uses: docker-practice/actions-setup-docker@master
         timeout-minutes: 12
