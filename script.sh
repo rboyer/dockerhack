@@ -9,6 +9,14 @@ cd "$(dirname "$0")"
 # If we're not on OS X, then error
 case $OSTYPE in
     darwin*)
+        wget https://desktop.docker.com/mac/main/amd64/Docker.dmg
+        sudo hdiutil attach Docker.dmg
+        sudo /Volumes/Docker/Docker.app/Contents/MacOS/install --accept-license
+        sudo hdiutil detach /Volumes/Docker
+
+        echo "We are waiting for Docker to be up and running. It can take over 2 minutes..."
+        while ! docker info &>/dev/null; do sleep 1; done
+
         # HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask docker
         # /Applications/Docker.app/Contents/MacOS/Docker --unattended --install-privileged-components
         # open -a /Applications/Docker.app --args --unattended --accept-license
