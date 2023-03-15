@@ -20,8 +20,11 @@ case $OSTYPE in
 
         # Install privileged components
         /Applications/Docker.app/Contents/MacOS/Docker \
+              --quit-after-install \
               --unattended \
               --install-privileged-components
+
+        nohup /Applications/Docker.app/Contents/MacOS/Docker --unattended &
 
         echo "We are waiting for Docker to be up and running. It can take over 2 minutes..."
         while ! docker info ; do sleep 1; done
