@@ -10,7 +10,7 @@ permissions:
 jobs:
   test-osx:
     runs-on: macos-latest
-     steps:
+    steps:
       - uses: actions/checkout@v3
       - name: Run tests
         run: |
@@ -18,7 +18,7 @@ jobs:
 
   test-linux:
     runs-on: ubuntu-22.04
-     steps:
+    steps:
       - uses: actions/checkout@v3
       - name: Run tests
         run: |
